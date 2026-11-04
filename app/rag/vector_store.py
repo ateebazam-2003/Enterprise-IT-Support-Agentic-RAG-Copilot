@@ -33,17 +33,23 @@ def get_dimension(model_name:str | None=None):
 
 
 
+import os
+
 def get_embedding():
     global _embedding
-    
+
+    print("\n========== EMBEDDING DEBUG ==========")
+    print("Vector Store File:", __file__)
+    print("Settings Model:", repr(settings.embedding_model))
+    print("Environment Model:", repr(os.getenv("EMBEDDING_MODEL")))
+    print("=====================================\n")
+
     if _embedding is None:
-        if  settings.embedding_model=="":
-            raise ValueError("Embedding Model not Configured")
-        else:
-            _embedding=HuggingFaceEmbeddings(
-                model_name=settings.embedding_model,
-                encode_kwargs={'normalize_embeddings':True}
-            )
+        _embedding = HuggingFaceEmbeddings(
+            model_name=settings.embedding_model,
+            encode_kwargs={'normalize_embeddings': True}
+        )
+
     return _embedding
 
 
@@ -86,22 +92,26 @@ def ensure_index():
 
 def get_vectore_store():
     global _vector_Store
-    
+
+    print("VECTOR STORE INITIALIZATION")
+    print("Embedding Model:", settings.embedding_model)
+
     if _vector_Store is None:
-        index=ensure_index()
-        
-        _vector_Store=PineconeVectorStore(
+        index = ensure_index()
+
+        _vector_Store = PineconeVectorStore(
             index=index,
             embedding=get_embedding(),
             namespace=settings.pinecone_namespace
         )
+
     return _vector_Store
 
 
 def get_retriever():
     return get_vectore_store().as_retriever(search_kwargs={'k':settings.top_k})
 
-def add_document(chunks):
+def add_documents(chunks):
     store=get_vectore_store()
     return store.add_documents(chunks)
 

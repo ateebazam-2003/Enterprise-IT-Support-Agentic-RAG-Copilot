@@ -290,7 +290,7 @@ PINECONE_NAMESPACE=company-it-kb
 
 # LLM Models
 GEMINI=gemini-3.5-flash-lite/or any of your choosing
-EMBEDDING_MODEL=text-embedding-3-small
+EMBEDDING_MODEL= sentence-transformers/all-MiniLM-L6-v2
 
 # Security
 ADMIN_API_KEY=change-me-in-production
@@ -309,7 +309,7 @@ APP_ENV=development
 | `PINECONE_INDEX_NAME` | Pinecone index name | `fde-it-support-rag` | ⚠️ Optional (default: `fde-it-support-rag`) |
 | `PINECONE_NAMESPACE` | Pinecone namespace for document isolation | `company-it-kb` | ⚠️ Optional (default: `company-it-kb`) |
 | `GEMINI_MODEL` | GEMINI model identifier | `gemini-3.5-flash-lite` | ⚠️ Optional (default: `gemini-3.5-flash-lite`) |
-| `EMBEDDING_MODEL` | Embedding model for vectorization | `text-embedding-3-small` | ⚠️ Optional (default: `text-embedding-3-small`) |
+| `EMBEDDING_MODEL` | Embedding model for vectorization | `text-embedding-3-small` | ⚠️ Optional (default: ` 'sentence-transformers/all-MiniLM-L6-v2'`) |
 | `ADMIN_API_KEY` | Secret key for admin endpoints (document ingestion) | `your-secure-key` | ⚠️ Optional (default: `change-me`) |
 | `APP_ENV` | Application environment | `development` or `production` | ⚠️ Optional (default: `development`) |
 
