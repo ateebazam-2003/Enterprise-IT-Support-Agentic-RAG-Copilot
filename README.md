@@ -104,14 +104,14 @@ This repository demonstrates each layer.
                │                             │
                ▼                             ▼
        ┌───────────────┐              ┌──────────────┐
-       │ Private KB    │              │ Tavily Web   │
-       │ Pinecone      │              │ Search       │
+       │ Private KB    │              │   Web        │
+       │ Pinecone      │              │   Search     │
        └───────┬───────┘              └──────┬───────┘
                │                             │
                └──────────────┬──────────────┘
                               ▼
                      ┌────────────────┐
-                     │ Groq LLM       │
+                     │     LLM        │
                      │ Grounded Answer│
                      └────────────────┘
 ```
